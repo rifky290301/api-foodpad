@@ -5,6 +5,7 @@ use App\Models\Recipe;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RecipeController;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,12 @@ Route::get('/', function () {
 Route::get('/user', function () {
     $users = User::latest()->paginate(10);
     return view('user', compact('users'));
+});
+
+Route::get('/list-api', function () {
+    $baseURL = URL::to('');
+    $baseURL .= '/api';
+    return view('list-api', compact('baseURL'));
 });
 
 

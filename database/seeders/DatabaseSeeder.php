@@ -60,8 +60,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Comment::create([
-            'comment' => 1,
+            'comment' => "resepnya keren",
             'user_id' => 3,
+            'recipe_id' => 1,
             'created_at' => now(),
             'updated_at' => now()
         ]);

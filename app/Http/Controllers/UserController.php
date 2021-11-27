@@ -19,9 +19,9 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         if ($user->delete()) {
-            return response()->json(["message" => 'Favorite berhasil dihapus'], 200);
+            return response()->json(["message" => 'User berhasil dihapus'], 200);
         }
-        return response()->json(["message" => 'Favorite gagal dihapus'], 400);
+        return response()->json(["message" => 'User gagal dihapus'], 400);
     }
 
     public function photoProfile($image)
@@ -32,6 +32,36 @@ class UserController extends Controller
         } catch (\Exception $e) {
             return response()->json(["message" => 'Foto profil tidak ditemukan'], 400);
         }
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->file('photo')) {
+            $path = public_path("upload/profile/") . $user->photo;
+            try {
+                unlink($path);
+            } catch (\Throwable $th) {
+            } finally {
+                $date = date('H-i-s');
+                $random = \Str::random(5);
+                $request->file('photo')->move('upload/profile', $date . $random . $request->file('photo')->getClientOriginalName());
+                $user->photo = $date . $random . $request->file('photo')->getClientOriginalName();
+            }
+        }
+
+        if ($user->save()) {
+            return response()->json(["message" => 'User berhasil update'], 200);
+        }
+        return response()->json(["message" => 'User gagal update'], 400);
     }
 
     // !-------------------------------------------------------------

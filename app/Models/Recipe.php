@@ -16,7 +16,7 @@ class Recipe extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'recipe_id');
     }
 
     public function ratings()

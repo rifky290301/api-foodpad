@@ -20,13 +20,14 @@ class RatingController extends Controller
         $this->validate($request, [
             'recipe_id' => 'required',
             'rating' => 'required',
+            'user_id' => 'required',
         ]);
 
         $rating = new Rating();
 
         $rating->recipe_id = $request->recipe_id;
         $rating->rating = $request->rating;
-        $rating->user_id = auth()->user()->id;
+        $rating->user_id = $request->user_id;
 
         if ($rating->save()) {
             return response()->json(["message" => 'Rating berhasil disimpan'], 200);

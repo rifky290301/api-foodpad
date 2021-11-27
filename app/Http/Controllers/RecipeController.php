@@ -9,7 +9,7 @@ class RecipeController extends Controller
 {
     public function index()
     {
-        $recipes = Recipe::with(["author", "ratings"])->latest()->get();
+        $recipes = Recipe::with(["author", "ratings", "comments"])->latest()->get();
         return response()->json([
             'recipes' => $recipes
         ], 200);

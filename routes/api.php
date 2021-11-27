@@ -27,23 +27,28 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
 
-//! RECIPES
-Route::get('/recipes', [RecipeController::class, 'index']);
-Route::post('/recipes', [RecipeController::class, 'store']);
-Route::put('/recipes/{id}', [RecipeController::class, 'update']);
-Route::delete('/recipes/{id}', [RecipeController::class, 'delete']);
+//! RECIPE
+Route::get('/recipe', [RecipeController::class, 'index']);
+Route::post('/recipe', [RecipeController::class, 'store']);
+Route::put('/recipe/{id}', [RecipeController::class, 'update']);
+Route::delete('/recipe/{id}', [RecipeController::class, 'delete']);
 
 //! FAVORITES
-Route::get('/favorites', [FavoriteController::class, 'index']);
-Route::post('/favorites', [FavoriteController::class, 'store']);
-Route::delete('/favorites/{id}', [FavoriteController::class, 'delete']);
+Route::get('/favorite', [FavoriteController::class, 'index']);
+Route::post('/favorite', [FavoriteController::class, 'store']);
+Route::delete('/favorite/{id}', [FavoriteController::class, 'delete']);
 
 //! RATING
 Route::get('/rating', [RatingController::class, 'index']);
 Route::post('/rating', [RatingController::class, 'store']);
-Route::delete('/rating/{id}', [RatingController::class, 'delete']);
 
 //! USER
 Route::get('/user', [UserController::class, 'index']);
 Route::delete('/user/{id}', [UserController::class, 'delete']);
 Route::get('/user/photo-profile/{image}', [UserController::class, 'photoProfile']);
+
+//! COMMENTS
+Route::get('/comment', [CommentController::class, 'index']);
+Route::post('/comment', [CommentController::class, 'store']);
+Route::put('/comment/{id}', [CommentController::class, 'update']);
+Route::delete('/comment/{id}', [CommentController::class, 'delete']);
