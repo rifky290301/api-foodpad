@@ -13,7 +13,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
+        \App\Models\User::create([
+            'name' => 'admin',
+            'email' => 'admin@foodpad.dev',
+            'email_verified_at' => now(),
+            'password' => bcrypt('admin123'),
+            'remember_token' => \Str::random(60),
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
 
         \App\Models\Recipe::create([
             'name' => 'Resep Dimsum Ayam Jamur, Lezatnya Bikin Ngiler',
