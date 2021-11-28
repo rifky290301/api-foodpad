@@ -9,24 +9,24 @@
           <form action="{{ route("store.recipe") }}" method="post" >
             @csrf
             <div class="form-group px-3">
-                <label for="title">Name</label>
-                <input type="text" name="name" id="title" class="form-control"/>
+              <label for="title">Name</label>
+              <input type="text" name="name" id="title" class="form-control"/>
             </div>
             <div class="form-group px-3">
-                <label for="title">Thumnail</label>
-                <input type="text" name="thumbnail" id="title" class="form-control"/>
+              <label for="title">Thumbnail</label>
+              <input type="text" name="thumbnail" id="title" class="form-control"/>
             </div>
             <div class="form-group px-3">
-              <label for="title">Bahan</label>
-              <textarea class="form-control" name="ingredients" id="" cols="30" rows="5"></textarea>
+              <label for="title">Description</label>
+              <input type="text" name="description" id="title" class="form-control"/>
             </div>
             <div class="form-group px-3">
-              <label for="title">Langkah-langkah</label>
-              <textarea class="form-control" name="step" id="" cols="30" rows="5"></textarea>
+              <label for="title">Prepare</label>
+              <input type="number" name="prepare" id="title" class="form-control"/>
             </div>
             <div class="form-group px-3">
-                <label for="title">Durasi</label>
-                <input type="number" name="duration" id="title" class="form-control"/>
+              <label for="title">Durasi</label>
+              <input type="number" name="duration" id="title" class="form-control"/>
             </div>
             <div class="form-group px-3">
               <label for="title">level</label>
@@ -35,19 +35,20 @@
                   <option selected disabled>Choose...</option>
                   <option value="Mudah">Mudah</option>
                   <option value="Sedang">Sedang</option>
-                  <option value="Cukup rumit">Cukup rumit</option>
-                  <option value="Rumit">Rumit</option>
+                  <option value="Sulit">Sulit</option>
                 </select>
               </div>
             </div>
             <div class="form-group px-3">
-              <label for="title">kategori</label>
+              <label for="title">Kategori</label>
               <div class="input-group ">
-                <select name="category" class="custom-select form-control" id="inputGroupSelect01">
+                <select name="category_id" class="custom-select form-control" id="inputGroupSelect01">
                   <option selected disabled>Choose...</option>
-                  <option value="Main Course">Main Course</option>
-                  <option value="Appetizer">Appetizer</option>
-                  <option value="Dessert">Dessert</option>
+                  @isset($categories)
+                    @foreach ($categories as $item)
+                    <option value="{{ $item->id }}">{{ $item->category }}</option>
+                    @endforeach
+                  @endisset
                 </select>
               </div>
             </div>
@@ -79,7 +80,7 @@ Data resep
       <th scope="col">Thumbnail</th>
       <th scope="col">Durasi</th>
       <th scope="col">Level</th>
-      <th scope="col">Kategori</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -90,7 +91,13 @@ Data resep
         <td>{{ $item->thumbnail}}</td>
         <td>{{ $item->duration}}</td>
         <td>{{ $item->level}}</td>
-        <td>{{ $item->category}}</td>
+        <td>
+          <form action="/recipe/{{$item->id}}" method="post" class="d-inline">
+            @method('delete') 
+            @csrf
+              <button class="btn btn-danger btn-sm mr-3" type="submit">Hapus</button>
+          </form>
+        </td>
       </tr>
       @endforeach
     @endisset

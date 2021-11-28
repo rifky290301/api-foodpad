@@ -41,6 +41,7 @@
       <th scope="col">Profile</th>
       <th scope="col">Nama</th>
       <th scope="col">Email</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -50,6 +51,13 @@
         <td style="width: 200px"><img src="{{ asset("upload/profile/$item->photo") }}" class="img-thumbnail" alt="..."></td>
         <td>{{ $item->name }}</td>
         <td>{{ $item->email}}</td>
+        <td>
+          <form action="/user/{{$item->id}}" method="post" class="d-inline">
+            @method('delete') 
+            @csrf
+              <button class="btn btn-danger btn-sm mr-3" type="submit">Hapus</button>
+          </form>
+        </td>
       </tr>
       @endforeach
     @endisset

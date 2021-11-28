@@ -61,10 +61,10 @@
       </td>
       <td>[name,
         ingredients,
-        step,
+        description,
+        prepare,
         duration,
-        level,
-        category]</td>
+        level]</td>
       <td>POST</td>
       <td>create data resep</td>
     </tr>
@@ -76,10 +76,10 @@
       </td>
       <td>{id resep};[name,
         ingredients,
-        step,
+        description,
+        prepare,
         duration,
-        level,
-        category]</td>
+        level]</td>
       <td>PUT</td>
       <td>update data resep</td>
     </tr>
@@ -110,52 +110,11 @@
         </a>
       </td>
       <td>[recipe_id,
+        review,
         rating,
         user_id]</td>
       <td>POST</td>
       <td>create data rating</td>
-    </tr>
-    <tr>
-      <td>
-        <a href="{{ $baseURL }}/comment" target="_blank">
-          {{ $baseURL }}/comment
-        </a>
-      </td>
-      <td></td>
-      <td>GET</td>
-      <td>ambil data comment</td>
-    </tr>
-    <tr>
-      <td>
-        <a href="{{ $baseURL }}/comment" target="_blank">
-          {{ $baseURL }}/comment
-        </a>
-      </td>
-      <td>[comment,
-        recipe_id,
-        user_id]</td>
-      <td>POST</td>
-      <td>create data comment</td>
-    </tr>
-    <tr>
-      <td>
-        <a href="{{ $baseURL }}/comment/{id}" target="_blank">
-          {{ $baseURL }}/comment/{id}
-        </a>
-      </td>
-      <td>{id comment};[comment]</td>
-      <td>PUT</td>
-      <td>update data comment</td>
-    </tr>
-    <tr>
-      <td>
-        <a href="{{ $baseURL }}/comment/{id}" target="_blank">
-          {{ $baseURL }}/comment/{id}
-        </a>
-      </td>
-      <td>{id comment}</td>
-      <td>DELETE</td>
-      <td>delete data comment</td>
     </tr>
     <tr>
       <td>

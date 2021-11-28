@@ -44,21 +44,98 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Recipe::create([
-            'name' => 'Resep Dimsum Ayam Jamur, Lezatnya Bikin Ngiler',
+            'name' => 'Dimsum Ayam Jamur',
             'thumbnail' => 'https://img.kurio.network/XzZrPvTIY-iIuEQFwN73TMm1ePc=/440x440/filters:quality(80)/https://kurio-img.kurioapps.com/21/10/12/71a5f06f-0f6a-48cb-981b-c85bff9d38bd.jpe',
-            'ingredients' => '1 butir telur
-            3 sdm tepung sagu
-            1 sdt garam
-            ½ sdt merica bubuk',
-            'step' => 'Masukkan potongan ayam ke dalam food processor, proses hingga halus.
-
-            Tambahkan telur, tepung sagu, garam, dan merica bubuk, proses hingga rata dan adonan bertekstur lengket (3-5 menit).
-            
-            Masukkan jamur dan daun bawang, proses hingga tercampur rata.',
-            'level' => 'Mudah',
+            'description' => 'Resep Dimsum Ayam Jamur, Lezatnya Bikin Ngiler',
+            'prepare' => 10,
             'duration' => 60,
-            'category' => "Main Course",
+            'level' => 'Mudah',
             'user_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        \App\Models\Category::create([
+            'category' => "Ayam",
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        \App\Models\Category::create([
+            'category' => "Sapi",
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        \App\Models\Category::create([
+            'category' => "Nasi",
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        \App\Models\Category::create([
+            'category' => "Ikan",
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        \App\Models\Category::create([
+            'category' => "Tahu",
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        \App\Models\Category::create([
+            'category' => "Tempe",
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        \App\Models\CategoryRecipes::create([
+            'recipe_id' => 1,
+            'category_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        \App\Models\CategoryRecipes::create([
+            'recipe_id' => 1,
+            'category_id' => 6,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        \App\Models\Ingredients::create([
+            'name' => "Bawang",
+            'value' => "1kg",
+            'recipe_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        \App\Models\Ingredients::create([
+            'name' => "Minyak goreng",
+            'value' => "1 liter",
+            'recipe_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        \App\Models\Ingredients::create([
+            'name' => "Merica",
+            'value' => "4kg",
+            'recipe_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        \App\Models\Step::create([
+            'step' => "Masukkan potongan ayam ke dalam food processor, proses hingga halus.",
+            'recipe_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        \App\Models\Step::create([
+            'step' => "Tambahkan telur, tepung sagu, garam, dan merica bubuk, proses hingga rata dan adonan bertekstur lengket (3-5 menit).",
+            'recipe_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        \App\Models\Step::create([
+            'step' => "Masukkan jamur dan daun bawang, proses hingga tercampur rata.",
+            'recipe_id' => 1,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -67,6 +144,7 @@ class DatabaseSeeder extends Seeder
             'recipe_id' => 1,
             'user_id' => 2,
             'rating' => 4,
+            'review' => "resepnya bagus",
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -75,6 +153,7 @@ class DatabaseSeeder extends Seeder
             'recipe_id' => 1,
             'user_id' => 3,
             'rating' => 1,
+            'review' => "nggak enak",
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -83,14 +162,7 @@ class DatabaseSeeder extends Seeder
             'recipe_id' => 1,
             'user_id' => 3,
             'rating' => 5,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-        \App\Models\Comment::create([
-            'comment' => "resepnya keren",
-            'user_id' => 3,
-            'recipe_id' => 1,
+            'review' => "terus berkarnya kak",
             'created_at' => now(),
             'updated_at' => now()
         ]);

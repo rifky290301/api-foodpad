@@ -9,33 +9,43 @@ class RecipeController extends Controller
 {
     public function index()
     {
-        $recipes = Recipe::with(["author", "ratings", "comments"])->latest()->get();
+        $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->latest()->get();
         return response()->json([
             'recipes' => $recipes
         ], 200);
     }
 
+    // public function trending()
+    // {
+    //     $recipes = Recipe::with("ratings")->latest()->get();
+    //     $result = [];
+    //     foreach ($recipes as $recipe) {
+    //         $temp = $recipe->rating;
+    //         $lengt = sizeof($temp);
+
+    //     }
+    //     return response()->json([
+    //         'recipes' => $recipes
+    //     ], 200);
+    // }
+
     public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required',
-            'ingredients' => 'required',
-            'step' => 'required',
             'duration' => 'required',
             'level' => 'required',
-            'category' => 'required',
         ]);
 
         $recipe = new Recipe();
 
         $recipe->name = $request->name;
         $recipe->thumbnail = $request->thumbnail;
-        $recipe->ingredients = $request->ingredients;
-        $recipe->step = $request->step;
+        $recipe->description = $request->description;
+        $recipe->prepare = $request->prepare;
         $recipe->duration = $request->duration;
         $recipe->level = $request->level;
-        $recipe->category = $request->category;
-        $recipe->user_id = auth()->user()->id;
+        $recipe->user_id = $request->user_id;
 
         if ($recipe->save()) {
             return response()->json(["message" => 'Resep berhasil disimpan'], 200);
@@ -47,23 +57,19 @@ class RecipeController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'ingredients' => 'required',
-            'step' => 'required',
             'duration' => 'required',
             'level' => 'required',
-            'category' => 'required',
         ]);
 
         $recipe = Recipe::findOrFail($id);
 
         $recipe->name = $request->name;
         $recipe->thumbnail = $request->thumbnail;
-        $recipe->ingredients = $request->ingredients;
-        $recipe->step = $request->step;
+        $recipe->description = $request->description;
+        $recipe->prepare = $request->prepare;
         $recipe->duration = $request->duration;
         $recipe->level = $request->level;
-        $recipe->category = $request->category;
-        $recipe->user_id = auth()->user()->id;
+        $recipe->user_id = $request->user_id;
 
         if ($recipe->save()) {
             return response()->json(["message" => 'Resep berhasil diubah'], 200);
@@ -88,25 +94,27 @@ class RecipeController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'ingredients' => 'required',
-            'step' => 'required',
             'duration' => 'required',
             'level' => 'required',
-            'category' => 'required',
         ]);
 
         $recipe = new Recipe();
 
         $recipe->name = $request->name;
         $recipe->thumbnail = $request->thumbnail;
-        $recipe->ingredients = $request->ingredients;
-        $recipe->step = $request->step;
+        $recipe->description = $request->description;
+        $recipe->prepare = $request->prepare;
         $recipe->duration = $request->duration;
         $recipe->level = $request->level;
-        $recipe->category = $request->category;
         $recipe->user_id = $request->user_id;
         $recipe->save();
+        return redirect('/');
+    }
 
+    public function deletee($id)
+    {
+        $recipe = Recipe::findOrFail($id);
+        $recipe->delete();
         return redirect('/');
     }
 }

@@ -17,11 +17,10 @@ class CreateRecipesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('thumbnail')->nullable();
-            $table->string('ingredients');
-            $table->text('step');
+            $table->string('description')->nullable();
+            $table->integer('prepare')->nullable();
             $table->integer('duration');
-            $table->enum("level", ['Mudah', 'Sedang', 'Cukup rumit', 'Rumit']);
-            $table->enum("category", ['Main Course', 'Appetizer', 'Dessert']);
+            $table->enum("level", ['Mudah', 'Sedang', 'Sulit']);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

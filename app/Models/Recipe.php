@@ -14,13 +14,23 @@ class Recipe extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function comments()
-    {
-        return $this->hasMany(Comment::class, 'recipe_id');
-    }
-
     public function ratings()
     {
         return $this->hasMany(Rating::class, 'recipe_id');
+    }
+
+    public function steps()
+    {
+        return $this->hasMany(Step::class, 'recipe_id');
+    }
+
+    public function ingredients()
+    {
+        return $this->hasMany(Ingredients::class, 'recipe_id');
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(CategoryRecipes::class, 'recipe_id')->with("category");
     }
 }

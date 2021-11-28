@@ -26,6 +26,21 @@
                 <a class="nav-link" href="/user">User</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="/ingredients">Ingredients</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/step">Step</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/rating">Rating</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/category">Category</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/category-recipe">Category Recipe</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="/list-api">List api</a>
               </li>
             </ul>

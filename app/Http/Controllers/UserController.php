@@ -95,4 +95,11 @@ class UserController extends Controller
 
         return redirect('/user');
     }
+
+    public function deletee($id)
+    {
+        $recipe = User::findOrFail($id);
+        $recipe->delete();
+        return redirect('/user');
+    }
 }

@@ -32,6 +32,8 @@ Route::get('/recipe', [RecipeController::class, 'index']);
 Route::post('/recipe', [RecipeController::class, 'store']);
 Route::put('/recipe/{id}', [RecipeController::class, 'update']);
 Route::delete('/recipe/{id}', [RecipeController::class, 'delete']);
+Route::get('/recipe/trending', [RecipeController::class, 'trending']);
+Route::get('/recipe/recommendation', [RecipeController::class, 'recommendation']);
 
 //! FAVORITES
 Route::get('/favorite', [FavoriteController::class, 'index']);
@@ -46,9 +48,3 @@ Route::post('/rating', [RatingController::class, 'store']);
 Route::get('/user', [UserController::class, 'index']);
 Route::delete('/user/{id}', [UserController::class, 'delete']);
 Route::get('/user/photo-profile/{image}', [UserController::class, 'photoProfile']);
-
-//! COMMENTS
-Route::get('/comment', [CommentController::class, 'index']);
-Route::post('/comment', [CommentController::class, 'store']);
-Route::put('/comment/{id}', [CommentController::class, 'update']);
-Route::delete('/comment/{id}', [CommentController::class, 'delete']);
