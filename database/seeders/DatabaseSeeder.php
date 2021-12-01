@@ -14,7 +14,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::create([
-            'name' => 'admin1',
+            'first_name' => 'rifky',
+            'last_name' => 'martha',
+            'photo' => 'Music Girl.png',
             'email' => 'admin1@foodpad.dev',
             'email_verified_at' => now(),
             'password' => bcrypt('admin123'),
@@ -24,7 +26,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\User::create([
-            'name' => 'admin2',
+            'first_name' => 'hadian',
+            'last_name' => 'firmana',
             'email' => 'admin2@foodpad.dev',
             'email_verified_at' => now(),
             'password' => bcrypt('admin123'),
@@ -34,7 +37,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\User::create([
-            'name' => 'admin3',
+            'first_name' => 'lorem',
+            'last_name' => 'ipsum',
             'email' => 'admin3@foodpad.dev',
             'email_verified_at' => now(),
             'password' => bcrypt('admin123'),
@@ -45,7 +49,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Recipe::create([
             'name' => 'Dimsum Ayam Jamur',
-            'thumbnail' => 'https://img.kurio.network/XzZrPvTIY-iIuEQFwN73TMm1ePc=/440x440/filters:quality(80)/https://kurio-img.kurioapps.com/21/10/12/71a5f06f-0f6a-48cb-981b-c85bff9d38bd.jpe',
+            'thumbnail' => 'resep 1.jpe',
             'description' => 'Resep Dimsum Ayam Jamur, Lezatnya Bikin Ngiler',
             'prepare' => 10,
             'duration' => 60,

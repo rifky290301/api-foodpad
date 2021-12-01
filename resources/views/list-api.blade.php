@@ -95,6 +95,16 @@
     </tr>
     <tr>
       <td>
+        <a href="{{ $baseURL }}/recipe/{id}" target="_blank">
+          {{ $baseURL }}/recipe/{id}
+        </a>
+      </td>
+      <td>{id resep}</td>
+      <td>GET</td>
+      <td>lihat detail data resep</td>
+    </tr>
+    <tr>
+      <td>
         <a href="{{ $baseURL }}/rating" target="_blank">
           {{ $baseURL }}/rating
         </a>
@@ -128,6 +138,46 @@
     </tr>
     <tr>
       <td>
+        <a href="{{ $baseURL }}/user" target="_blank">
+          {{ $baseURL }}/user
+        </a>
+      </td>
+      <td></td>
+      <td>PUT</td>
+      <td>edit data user</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/category" target="_blank">
+          {{ $baseURL }}/category
+        </a>
+      </td>
+      <td></td>
+      <td>GET</td>
+      <td>liat data kategori</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/category" target="_blank">
+          {{ $baseURL }}/category
+        </a>
+      </td>
+      <td></td>
+      <td>PUT</td>
+      <td>edit data kategori</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/category/{id}" target="_blank">
+          {{ $baseURL }}/category/{id}
+        </a>
+      </td>
+      <td>{id kategori}</td>
+      <td>DELETE</td>
+      <td>delete data kategori</td>
+    </tr>
+    <tr>
+      <td>
         <a href="{{ $baseURL }}/user/photo-profile/{image}" target="_blank">
           {{ $baseURL }}/user/photo-profile/{image}
         </a>
@@ -135,6 +185,16 @@
       <td>{nama gambar}</td>
       <td>GET</td>
       <td>ambil foto profile</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}'/recipe/thumbnail/{image}" target="_blank">
+          {{ $baseURL }}/recipe/thumbnail/{image}
+        </a>
+      </td>
+      <td>{nama gambar}</td>
+      <td>GET</td>
+      <td>ambil thumbnail resep</td>
     </tr>
   </tbody>
 </table>

@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FavoriteController;
 
 /*
@@ -29,11 +30,13 @@ Route::post('/register', [AuthController::class, 'register']);
 
 //! RECIPE
 Route::get('/recipe', [RecipeController::class, 'index']);
+Route::get('/recipe/{id}', [RecipeController::class, 'show']);
 Route::post('/recipe', [RecipeController::class, 'store']);
 Route::put('/recipe/{id}', [RecipeController::class, 'update']);
 Route::delete('/recipe/{id}', [RecipeController::class, 'delete']);
 Route::get('/recipe/trending', [RecipeController::class, 'trending']);
 Route::get('/recipe/recommendation', [RecipeController::class, 'recommendation']);
+Route::get('/recipe/thumbnail/{image}', [RecipeController::class, 'thumbnail']);
 
 //! FAVORITES
 Route::get('/favorite', [FavoriteController::class, 'index']);
@@ -48,3 +51,8 @@ Route::post('/rating', [RatingController::class, 'store']);
 Route::get('/user', [UserController::class, 'index']);
 Route::delete('/user/{id}', [UserController::class, 'delete']);
 Route::get('/user/photo-profile/{image}', [UserController::class, 'photoProfile']);
+
+//! CATEGORY
+Route::get('/category', [CategoryController::class, 'index']);
+Route::post('/category', [CategoryController::class, 'store']);
+Route::delete('/category/{id}', [CategoryController::class, 'delete']);

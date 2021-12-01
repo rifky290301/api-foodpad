@@ -18,10 +18,16 @@ class UserController extends Controller
     public function delete($id)
     {
         $user = User::findOrFail($id);
-        if ($user->delete()) {
-            return response()->json(["message" => 'User berhasil dihapus'], 200);
+        $path = public_path("upload/profile/") . $user->photo;
+        try {
+            unlink($path);
+        } catch (\Throwable $th) {
+        } finally {
+            if ($user->delete()) {
+                return response()->json(["message" => 'User berhasil dihapus'], 200);
+            }
+            return response()->json(["message" => 'User gagal dihapus'], 400);
         }
-        return response()->json(["message" => 'User gagal dihapus'], 400);
     }
 
     public function photoProfile($image)

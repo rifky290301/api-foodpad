@@ -6,7 +6,7 @@
           <div class="card-header">
             Tambah resep
           </div>
-          <form action="{{ route("store.recipe") }}" method="post" >
+          <form action="{{ route("store.recipe") }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group px-3">
               <label for="title">Name</label>
@@ -14,8 +14,11 @@
             </div>
             <div class="form-group px-3">
               <label for="title">Thumbnail</label>
-              <input type="text" name="thumbnail" id="title" class="form-control"/>
-            </div>
+              <div class="custom-file">
+                <input type="file" name="thumbnail" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
+          </div>
             <div class="form-group px-3">
               <label for="title">Description</label>
               <input type="text" name="description" id="title" class="form-control"/>
@@ -88,7 +91,7 @@ Data resep
       @foreach ($recipes as $item)
       <tr>
         <td>{{ $item->name }}</td>
-        <td>{{ $item->thumbnail}}</td>
+        <td style="width: 200px"><img src="{{ asset("upload/thumbnail/$item->thumbnail") }}" class="img-thumbnail" alt="..."></td>
         <td>{{ $item->duration}}</td>
         <td>{{ $item->level}}</td>
         <td>
