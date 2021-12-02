@@ -188,7 +188,7 @@
     </tr>
     <tr>
       <td>
-        <a href="{{ $baseURL }}'/recipe/thumbnail/{image}" target="_blank">
+        <a href="{{ $baseURL }}/recipe/thumbnail/{image}" target="_blank">
           {{ $baseURL }}/recipe/thumbnail/{image}
         </a>
       </td>

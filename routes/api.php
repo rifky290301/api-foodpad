@@ -36,7 +36,7 @@ Route::put('/recipe/{id}', [RecipeController::class, 'update']);
 Route::delete('/recipe/{id}', [RecipeController::class, 'delete']);
 Route::get('/recipe/trending', [RecipeController::class, 'trending']);
 Route::get('/recipe/recommendation', [RecipeController::class, 'recommendation']);
-Route::get('/recipe/thumbnail/{image}', [RecipeController::class, 'thumbnail']);
+Route::get('/recipe/thumbnail/{image}', [RecipeController::class, 'thumbnailImage']);
 
 //! FAVORITES
 Route::get('/favorite', [FavoriteController::class, 'index']);

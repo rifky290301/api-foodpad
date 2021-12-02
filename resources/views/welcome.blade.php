@@ -91,7 +91,8 @@ Data resep
       @foreach ($recipes as $item)
       <tr>
         <td>{{ $item->name }}</td>
-        <td style="width: 200px"><img src="{{ asset("upload/thumbnail/$item->thumbnail") }}" class="img-thumbnail" alt="..."></td>
+        <td style="width: 200px"><img src="{{ asset("storage/$item->thumbnail") }}" class="img-thumbnail" alt="..."></td>
+        {{-- <td style="width: 200px"><img src="{{ asset("upload/thumbnail/$item->thumbnail") }}" class="img-thumbnail" alt="..."></td> --}}
         <td>{{ $item->duration}}</td>
         <td>{{ $item->level}}</td>
         <td>
