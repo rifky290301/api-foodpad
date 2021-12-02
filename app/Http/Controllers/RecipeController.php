@@ -153,25 +153,27 @@ class RecipeController extends Controller
         $recipe->duration = $request->duration;
         $recipe->level = $request->level;
         $recipe->user_id = $request->user_id;
-        // if ($request->file('thumbnail')) {
-        //     $path = public_path("upload/thumbnail/") . $recipe->thumbnail;
-        //     try {
-        //         unlink($path);
-        //     } catch (\Throwable $th) {
-        //     } finally {
-        //         $date = date('H-i-s');
-        //         $random = \Str::random(5);
-        //         $request->file('thumbnail')->move('upload/thumbnail', $date . $random . $request->file('thumbnail')->getClientOriginalName());
-        //         $recipe->thumbnail = $date . $random . $request->file('thumbnail')->getClientOriginalName();
-        //     }
-        // }
-        $date = date('H-i-s');
-        $random = \Str::random(5);
-        $thumbnail = $request->file('thumbnail');
-        $fileName = "{$date}.{$random}.{$thumbnail->extension()}";
-        $thumbnail->storeAs("images/upload/thumbnail", $fileName);
+        if ($request->file('thumbnail')) {
+            $path = public_path("upload/thumbnail/") . $recipe->thumbnail;
+            try {
+                unlink($path);
+            } catch (\Throwable $th) {
+            } finally {
+                $date = date('H-i-s');
+                $random = \Str::random(5);
+                $request->file('thumbnail')->move('upload/thumbnail', $date . $random . $request->file('thumbnail')->getClientOriginalName());
+                $recipe->thumbnail = $date . $random . $request->file('thumbnail')->getClientOriginalName();
+            }
+        } else {
+            $recipe->user_id = $request->thumbnail;
+        }
+        // $date = date('H-i-s');
+        // $random = \Str::random(5);
+        // $thumbnail = $request->file('thumbnail');
+        // $fileName = "{$date}.{$random}.{$thumbnail->extension()}";
+        // $thumbnail->storeAs("images/upload/thumbnail", $fileName);
 
-        $recipe->thumbnail = $fileName;
+        // $recipe->thumbnail = $fileName;
 
         $recipe->save();
         return redirect('/');

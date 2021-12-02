@@ -12,13 +12,17 @@
               <label for="title">Name</label>
               <input type="text" name="name" id="title" class="form-control"/>
             </div>
-            <div class="form-group px-3">
+            {{-- <div class="form-group px-3">
               <label for="title">Thumbnail</label>
               <div class="custom-file">
                 <input type="file" name="thumbnail" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
                 <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
               </div>
-          </div>
+            </div> --}}
+            <div class="form-group px-3">
+              <label for="title">Thumbnail</label>
+              <input type="text" name="thumbnail" id="title" class="form-control"/>
+            </div>
             <div class="form-group px-3">
               <label for="title">Description</label>
               <input type="text" name="description" id="title" class="form-control"/>
@@ -91,7 +95,8 @@ Data resep
       @foreach ($recipes as $item)
       <tr>
         <td>{{ $item->name }}</td>
-        <td style="width: 200px"><img src="{{ asset("storage/images/upload/thumbnail/$item->thumbnail") }}" class="img-thumbnail" alt="..."></td>
+        <td style="width: 200px"><img src="{{ $item->thumbnail }}" class="img-thumbnail" alt="..."></td>
+        {{-- <td style="width: 200px"><img src="{{ asset("storage/images/upload/thumbnail/$item->thumbnail") }}" class="img-thumbnail" alt="..."></td> --}}
         {{-- <td style="width: 200px"><img src="{{ asset("upload/thumbnail/$item->thumbnail") }}" class="img-thumbnail" alt="..."></td> --}}
         <td>{{ $item->duration}}</td>
         <td>{{ $item->level}}</td>

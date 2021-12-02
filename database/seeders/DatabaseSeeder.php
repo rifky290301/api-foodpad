@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Recipe::create([
             'name' => 'Dimsum Ayam Jamur',
-            'thumbnail' => 'resep 1.jpe',
+            'thumbnail' => 'https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2021/11/30/3740584419.jpeg',
             'description' => 'Resep Dimsum Ayam Jamur, Lezatnya Bikin Ngiler',
             'prepare' => 10,
             'duration' => 60,
