@@ -165,7 +165,7 @@ class RecipeController extends Controller
                 $recipe->thumbnail = $date . $random . $request->file('thumbnail')->getClientOriginalName();
             }
         } else {
-            $recipe->user_id = $request->thumbnail;
+            $recipe->thumbnail = $request->thumbnail;
         }
         // $date = date('H-i-s');
         // $random = \Str::random(5);

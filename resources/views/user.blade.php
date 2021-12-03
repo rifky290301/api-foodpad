@@ -49,7 +49,7 @@
       @foreach ($users as $item)
       <tr>
         <td style="width: 200px"><img src="{{ asset("upload/profile/$item->photo") }}" class="img-thumbnail" alt="..."></td>
-        <td>{{ $item->name }}</td>
+        <td>{{ $item->first_name }}</td>
         <td>{{ $item->email}}</td>
         <td>
           <form action="/user/{{$item->id}}" method="post" class="d-inline">

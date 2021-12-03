@@ -66,7 +66,7 @@
                   <option selected disabled>Choose...</option>
                   @isset($users)
                     @foreach ($users as $item)
-                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    <option value="{{ $item->id }}">{{ $item->email }}</option>
                     @endforeach
                   @endisset
                 </select>
