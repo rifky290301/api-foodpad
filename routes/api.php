@@ -34,12 +34,12 @@ Route::get('/recipe/{id}', [RecipeController::class, 'show']);
 Route::post('/recipe', [RecipeController::class, 'store']);
 Route::put('/recipe/{id}', [RecipeController::class, 'update']);
 Route::delete('/recipe/{id}', [RecipeController::class, 'delete']);
-Route::get('/recipe/trending', [RecipeController::class, 'trending']);
-Route::get('/recipe/recommendation', [RecipeController::class, 'recommendation']);
+Route::get('/recommendation', [RecipeController::class, 'recommendation']);
+Route::get('/trending', [RecipeController::class, 'trending']);
 Route::get('/recipe/thumbnail/{image}', [RecipeController::class, 'thumbnailImage']);
 
 //! FAVORITES
-Route::get('/favorite', [FavoriteController::class, 'index']);
+Route::get('/favorite/{id}', [FavoriteController::class, 'index']);
 Route::post('/favorite', [FavoriteController::class, 'store']);
 Route::delete('/favorite/{id}', [FavoriteController::class, 'delete']);
 

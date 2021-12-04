@@ -7,9 +7,8 @@ use Illuminate\Http\Request;
 
 class FavoriteController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        $id = auth()->user()->id;
         $favorite = Favorite::with("recipe")->where("user_id", $id)->latest()->get();
         return response()->json([
             'favorite' => $favorite
@@ -25,8 +24,8 @@ class FavoriteController extends Controller
 
         $favorite = new Favorite();
 
-        $favorite->article_title = $request->article_title;
-        $favorite->user_id = auth()->user()->id;
+        $favorite->recipe_id = $request->recipe_id;
+        $favorite->user_id = $request->user_id;
 
         if ($favorite->save()) {
             return response()->json(["message" => 'Favorite berhasil disimpan'], 200);

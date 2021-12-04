@@ -9,7 +9,7 @@ class RecipeController extends Controller
 {
     public function index()
     {
-        $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->latest()->get();
+        $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->get();
         return response()->json([
             'recipes' => $recipes
         ], 200);
@@ -18,6 +18,22 @@ class RecipeController extends Controller
     public function show($id)
     {
         $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->where('id', $id)->get();
+        return response()->json([
+            'recipes' => $recipes
+        ], 200);
+    }
+
+    public function recommendation()
+    {
+        $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->latest()->get();
+        return response()->json([
+            'recipes' => $recipes
+        ], 200);
+    }
+
+    public function trending()
+    {
+        $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->take(5)->get();
         return response()->json([
             'recipes' => $recipes
         ], 200);

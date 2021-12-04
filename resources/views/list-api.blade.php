@@ -55,6 +55,26 @@
     </tr>
     <tr>
       <td>
+        <a href="{{ $baseURL }}/trending" target="_blank">
+          {{ $baseURL }}/trending
+        </a>
+      </td>
+      <td></td>
+      <td>GET</td>
+      <td>ambil data resep yang sedang trending</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/recommendation" target="_blank">
+          {{ $baseURL }}/recommendation
+        </a>
+      </td>
+      <td></td>
+      <td>GET</td>
+      <td>ambil data resep yang direkomendasikan</td>
+    </tr>
+    <tr>
+      <td>
         <a href="{{ $baseURL }}/recipe" target="_blank">
           {{ $baseURL }}/recipe
         </a>
@@ -195,6 +215,36 @@
       <td>{nama gambar}</td>
       <td>GET</td>
       <td>ambil thumbnail resep</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/favorite/{id}" target="_blank">
+          {{ $baseURL }}/favorite/{id user}
+        </a>
+      </td>
+      <td>{id user}</td>
+      <td>GET</td>
+      <td>ambil data resep berdasarkan id user yang mengambil</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/favorite/{id}" target="_blank">
+          {{ $baseURL }}/favorite/{id favorite}
+        </a>
+      </td>
+      <td>{id user}</td>
+      <td>DELETE</td>
+      <td>hapus data favorite berdasarkan id favorite</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/favorite" target="_blank">
+          {{ $baseURL }}/favorite
+        </a>
+      </td>
+      <td>[user_id, favorite_id]</td>
+      <td>POST</td>
+      <td>tambah data favorite</td>
     </tr>
   </tbody>
 </table>
