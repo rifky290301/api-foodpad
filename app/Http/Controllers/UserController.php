@@ -43,14 +43,14 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
 
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-        ]);
+        // $this->validate($request, [
+        //     'name' => 'required',
+        //     'email' => 'required|email|unique:users',
+        // ]);
 
         $user = User::findOrFail($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         if ($request->file('photo')) {
             $path = public_path("upload/profile/") . $user->photo;
             try {
@@ -75,13 +75,15 @@ class UserController extends Controller
     {
 
         $this->validate($request, [
-            'name' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required',
         ]);
 
         $user = new User;
-        $user->name = $request->name;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->email = $request->email;
         if ($request->file('photo')) {
             $path = public_path("upload/profile/") . $user->photo;
@@ -94,6 +96,8 @@ class UserController extends Controller
                 $request->file('photo')->move('upload/profile', $date . $random . $request->file('photo')->getClientOriginalName());
                 $user->photo = $date . $random . $request->file('photo')->getClientOriginalName();
             }
+        } else {
+            $user->photo = $request->photo;
         }
 
         $user->password = app('hash')->make($request->password);

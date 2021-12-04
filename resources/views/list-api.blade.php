@@ -246,6 +246,26 @@
       <td>POST</td>
       <td>tambah data favorite</td>
     </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/recipe/category/{category}" target="_blank">
+          {{ $baseURL }}/recipe/category/{category}
+        </a>
+      </td>
+      <td>[id]</td>
+      <td>get</td>
+      <td>Resep berdasarkan id kategori</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/search/{name}" target="_blank">
+          {{ $baseURL }}/search/{name}
+        </a>
+      </td>
+      <td>[nama resep]</td>
+      <td>get</td>
+      <td>Pencarian resep berdasarkan nama resep</td>
+    </tr>
   </tbody>
 </table>
 @endsection

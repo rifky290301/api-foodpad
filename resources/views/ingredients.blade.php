@@ -17,7 +17,7 @@
                 <input type="text" name="value" id="title" class="form-control"/>
             </div>
             <div class="form-group px-3">
-              <label for="title">Penulis</label>
+              <label for="title">Resep</label>
               <div class="input-group ">
                 <select name="recipe_id" class="custom-select form-control" id="inputGroupSelect01">
                   <option selected disabled>Choose...</option>
@@ -40,6 +40,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th scope="col">Id</th>
       <th scope="col">Nama</th>
       <th scope="col">Value</th>
       <th scope="col">Resep</th>
@@ -50,6 +51,7 @@
     @isset($ingredients)
       @foreach ($ingredients as $item)
       <tr>
+        <td>{{ $item->id }}</td>
         <td>{{ $item->recipe->name }}</td>
         <td>{{ $item->name }}</td>
         <td>{{ $item->value}}</td>

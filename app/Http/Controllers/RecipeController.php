@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RecipeController extends Controller
 {
@@ -37,6 +38,32 @@ class RecipeController extends Controller
         return response()->json([
             'recipes' => $recipes
         ], 200);
+    }
+
+    public function recipeByCategory($idCategory)
+    {
+        $recipes = DB::table('recipes')
+            ->select('*')
+            ->join('category_recipes', 'category_recipes.recipe_id', '=', 'recipes.id')
+            ->join('categories', 'categories.id', '=', 'category_recipes.category_id')
+            ->join('ratings', 'ratings.id', '=', 'recipes.id')
+            ->where('categories.id', '=', $idCategory)
+            ->get();
+        return response()->json([
+            'recipes' => $recipes
+        ], 200);
+    }
+
+    function search($name)
+    {
+        $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->where('name', 'LIKE', '%' . $name . '%')->get();
+        if (count($recipes)) {
+            return response()->json([
+                'recipes' => $recipes
+            ], 200);
+        } else {
+            return response()->json(['Result' => 'No Data not found'], 404);
+        }
     }
 
     // public function trending()

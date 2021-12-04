@@ -23,6 +23,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th scope="col">Id</th>
       <th scope="col">Kategori</th>
       <th scope="col">Action</th>
     </tr>
@@ -31,6 +32,7 @@
     @isset($categories)
       @foreach ($categories as $item)
       <tr>
+        <td>{{ $item->id }}</td>
         <td>{{ $item->category }}</td>
         <td>
           <form action="/category/{{$item->id}}" method="post" class="d-inline">

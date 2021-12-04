@@ -47,19 +47,6 @@
               </div>
             </div>
             <div class="form-group px-3">
-              <label for="title">Kategori</label>
-              <div class="input-group ">
-                <select name="category_id" class="custom-select form-control" id="inputGroupSelect01">
-                  <option selected disabled>Choose...</option>
-                  @isset($categories)
-                    @foreach ($categories as $item)
-                    <option value="{{ $item->id }}">{{ $item->category }}</option>
-                    @endforeach
-                  @endisset
-                </select>
-              </div>
-            </div>
-            <div class="form-group px-3">
               <label for="title">Penulis</label>
               <div class="input-group ">
                 <select name="user_id" class="custom-select form-control" id="inputGroupSelect01">
@@ -83,6 +70,7 @@ Data resep
 <table class="table">
   <thead>
     <tr>
+      <th scope="col">Id</th>
       <th scope="col">Nama</th>
       <th scope="col">Thumbnail</th>
       <th scope="col">Durasi</th>
@@ -94,6 +82,7 @@ Data resep
     @isset($recipes)
       @foreach ($recipes as $item)
       <tr>
+        <td>{{ $item->id }}</td>
         <td>{{ $item->name }}</td>
         <td style="width: 200px"><img src="{{ $item->thumbnail }}" class="img-thumbnail" alt="..."></td>
         {{-- <td style="width: 200px"><img src="{{ asset("storage/images/upload/thumbnail/$item->thumbnail") }}" class="img-thumbnail" alt="..."></td> --}}

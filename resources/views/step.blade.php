@@ -36,6 +36,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th scope="col">Id</th>
       <th scope="col">Resep</th>
       <th scope="col">Step</th>
       <th scope="col">Action</th>
@@ -45,6 +46,7 @@
     @isset($steps)
       @foreach ($steps as $item)
       <tr>
+        <td>{{ $item->id }}</td>
         <td>{{ $item->recipe->name }}</td>
         <td>{{ $item->step }}</td>
         <td>
