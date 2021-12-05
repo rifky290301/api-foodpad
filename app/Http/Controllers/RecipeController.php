@@ -56,11 +56,9 @@ class RecipeController extends Controller
 
     function search($name)
     {
-        if ($name != null) {
-            $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->where('name', 'LIKE', '%' . $name . '%')->get();
-        } else {
-            $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->latest()->get();
-        }
+
+        // $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->where('name', 'LIKE', '%' . $name . '%')->get();
+        $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->where(DB::raw('lower(name)'), 'like', '%' . strtolower($name) . '%')->get();
 
         if (count($recipes)) {
             return response()->json([
