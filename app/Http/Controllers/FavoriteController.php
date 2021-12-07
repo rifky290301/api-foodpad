@@ -15,6 +15,15 @@ class FavoriteController extends Controller
         ], 200);
     }
 
+    public function favoriteUser()
+    {
+        $id = auth()->user()->id;
+        $favorite = Favorite::with("recipe")->where("user_id", $id)->latest()->get();
+        return response()->json([
+            'favorite' => $favorite
+        ], 200);
+    }
+
     public function show($idRecipe, $idUser)
     {
         $favorite = Favorite::with("recipe")->where("user_id", $idUser)->where("recipe_id", $idRecipe)->latest()->get();

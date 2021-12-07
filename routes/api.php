@@ -42,6 +42,7 @@ Route::get('/search/{name}', [RecipeController::class, 'search']);
 
 //! FAVORITES
 Route::get('/favorite/{id}', [FavoriteController::class, 'index']);
+Route::get('/favorite-user', [FavoriteController::class, 'favoriteUser']);
 Route::get('/favorite/{idRecipe}/{idUser}', [FavoriteController::class, 'show']);
 Route::post('/favorite', [FavoriteController::class, 'store']);
 Route::delete('/favorite/{id}', [FavoriteController::class, 'delete']);
