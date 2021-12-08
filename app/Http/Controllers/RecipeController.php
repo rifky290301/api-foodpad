@@ -40,14 +40,14 @@ class RecipeController extends Controller
         ], 200);
     }
 
-    public function recipeByCategory($idCategory)
+    public function recipeByCategory($category)
     {
         $recipes = DB::table('recipes')
             ->select('*')
             ->join('category_recipes', 'category_recipes.recipe_id', '=', 'recipes.id')
             ->join('categories', 'categories.id', '=', 'category_recipes.category_id')
             ->join('ratings', 'ratings.id', '=', 'recipes.id')
-            ->where('categories.id', '=', $idCategory)
+            ->where('categories.category', '=', $category)
             ->get();
         return response()->json([
             'recipes' => $recipes
