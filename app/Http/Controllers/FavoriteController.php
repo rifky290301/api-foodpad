@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Favorite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
@@ -17,7 +18,7 @@ class FavoriteController extends Controller
 
     public function favoriteUser()
     {
-        $id = auth()->user()->id;
+        $id = Auth::id();
         $favorite = Favorite::with("recipe")->where("user_id", $id)->latest()->get();
         return response()->json([
             'favorite' => $favorite
