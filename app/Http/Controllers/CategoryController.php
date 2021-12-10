@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $category = Category::latest()->get();
+        $category = Category::take(6)->get();
         return response()->json([
             'categories' => $category
         ], 200);
