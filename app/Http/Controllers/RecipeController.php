@@ -34,7 +34,15 @@ class RecipeController extends Controller
 
     public function trending()
     {
-        $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->take(5)->get();
+        $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->take(3)->get();
+        return response()->json([
+            'recipes' => $recipes
+        ], 200);
+    }
+
+    public function sementara()
+    {
+        $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->take(2)->get();
         return response()->json([
             'recipes' => $recipes
         ], 200);

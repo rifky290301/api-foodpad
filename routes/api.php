@@ -30,6 +30,7 @@ Route::post('/register', [AuthController::class, 'register']);
 
 //! RECIPE
 Route::get('/recipe', [RecipeController::class, 'index']);
+Route::get('/sementara', [RecipeController::class, 'sementara']);
 Route::get('/recipe/{id}', [RecipeController::class, 'show']);
 Route::post('/recipe', [RecipeController::class, 'store']);
 Route::put('/recipe/{id}', [RecipeController::class, 'update']);

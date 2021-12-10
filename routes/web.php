@@ -29,8 +29,8 @@ use App\Http\Controllers\CategoryRecipesController;
 */
 
 Route::get('/', function () {
-    $users = User::all();
-    $categories = Category::all();
+    $users = User::latest()->get();
+    $categories = Category::latest()->get();
     $recipes = Recipe::latest()->paginate(10);
     return view('welcome', compact('users', 'categories', 'recipes'));
 });
@@ -42,7 +42,7 @@ Route::get('/user', function () {
 
 Route::get('/ingredients', function () {
     $ingredients = Ingredients::with("recipe")->latest()->paginate(10);
-    $recipes = Recipe::all();
+    $recipes = Recipe::latest()->get();
     return view('ingredients', compact('ingredients', 'recipes'));
 });
 
@@ -52,21 +52,21 @@ Route::get('/category', function () {
 });
 
 Route::get('/category-recipe', function () {
-    $recipes = Recipe::all();
-    $categories = Category::all();
+    $recipes = Recipe::latest()->get();
+    $categories = Category::latest()->get();
     $categoryRecipe = CategoryRecipes::latest()->paginate(10);
     return view('category-recipe', compact('categoryRecipe', 'categories', 'recipes'));
 });
 
 Route::get('/step', function () {
-    $recipes = Recipe::all();
+    $recipes = Recipe::latest()->get();
     $steps = Step::with('recipe')->latest()->paginate(10);
     return view('step', compact('steps', 'recipes'));
 });
 
 Route::get('/rating', function () {
-    $recipes = Recipe::all();
-    $users = User::all();
+    $recipes = Recipe::latest()->get();
+    $users = User::latest()->get();
     $ratings = Rating::with(['recipe', 'user'])->latest()->paginate(10);
     return view('rating', compact('ratings', 'recipes', 'users'));
 });
