@@ -42,7 +42,7 @@ class RecipeController extends Controller
 
     public function sementara()
     {
-        $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->take(2)->get();
+        $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->take(4)->get();
         return response()->json([
             'recipes' => $recipes
         ], 200);
