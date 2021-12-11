@@ -267,7 +267,11 @@
       <td>Pencarian resep berdasarkan nama resep</td>
     </tr>
     <hr>
-    <p>Ini aku sederhanakan biar ga terlalu berat loadingnya</p>
+    <tr>
+      <td>
+        <p>Ini aku sederhanakan biar ga terlalu berat loadingnya</p>
+      </td>
+    </tr>
     <tr>
       <td>
         <a href="{{ $baseURL }}/recipe2" target="_blank">
