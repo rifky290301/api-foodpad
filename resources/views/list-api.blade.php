@@ -266,6 +266,38 @@
       <td>get</td>
       <td>Pencarian resep berdasarkan nama resep</td>
     </tr>
+    <hr>
+    <p>Ini aku sederhanakan biar ga terlalu berat loadingnya</p>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/recipe2" target="_blank">
+          {{ $baseURL }}/recipe2
+        </a>
+      </td>
+      <td></td>
+      <td>GET</td>
+      <td>ambil data resep sederhana</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/favorite2/{id}" target="_blank">
+          {{ $baseURL }}/favorite2/{id user}
+        </a>
+      </td>
+      <td>{id user}</td>
+      <td>GET</td>
+      <td>ambil data resep berdasarkan id user yang mengambil</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/category2" target="_blank">
+          {{ $baseURL }}/category2
+        </a>
+      </td>
+      <td></td>
+      <td>GET</td>
+      <td>liat data kategori</td>
+    </tr>
   </tbody>
 </table>
 @endsection

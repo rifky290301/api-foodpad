@@ -4,15 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Resources\CategoryResource;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        $category = Category::take(6)->get();
+        $category = Category::latest()->get();
         return response()->json([
-            'categories' => $category
+            'category' => $category
         ], 200);
+    }
+    public function index2()
+    {
+        $category = Category::latest()->get();
+        return CategoryResource::collection($category);
     }
 
     public function store(Request $request)

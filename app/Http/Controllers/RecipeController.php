@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Resources\RecipeResource;
 
 class RecipeController extends Controller
 {
@@ -16,17 +17,15 @@ class RecipeController extends Controller
         ], 200);
     }
 
+    public function index2()
+    {
+        $recipes = Recipe::with(["ratings"])->latest()->get();
+        return RecipeResource::collection($recipes);
+    }
+
     public function show($id)
     {
         $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->where('id', $id)->get();
-        return response()->json([
-            'recipes' => $recipes
-        ], 200);
-    }
-
-    public function recommendation()
-    {
-        $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->latest()->get();
         return response()->json([
             'recipes' => $recipes
         ], 200);
@@ -38,6 +37,26 @@ class RecipeController extends Controller
         return response()->json([
             'recipes' => $recipes
         ], 200);
+    }
+
+    public function trending2()
+    {
+        $recipes = Recipe::with(["ratings"])->latest()->get();
+        $count = count($recipes);
+        for ($i = 0; $i < $count; $i++) {
+            $temp = count($recipes[$i]['ratings']);
+            $recipes[$i]['jumlah'] = $temp;
+        }
+        $size = count($recipes) - 1;
+        for ($i = 0; $i < $size; $i++) {
+            for ($j = 0; $j < $size - $i; $j++) {
+                $k = $j + 1;
+                if ($recipes[$k]['jumlah'] > $recipes[$j]['jumlah']) {
+                    list($recipes[$j], $recipes[$k]) = array($recipes[$k], $recipes[$j]);
+                }
+            }
+        }
+        return RecipeResource::collection($recipes);
     }
 
     public function sementara()
