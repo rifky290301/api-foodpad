@@ -6,6 +6,7 @@ use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\RecipeResource;
+use App\Http\Resources\RecipeCategoryResource;
 
 class RecipeController extends Controller
 {
@@ -76,9 +77,7 @@ class RecipeController extends Controller
             ->join('ratings', 'ratings.id', '=', 'recipes.id')
             ->where('categories.category', '=', $category)
             ->get();
-        return response()->json([
-            'recipes' => $recipes
-        ], 200);
+        return RecipeCategoryResource::collection($recipes);
     }
 
     function search($name)
