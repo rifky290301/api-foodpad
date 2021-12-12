@@ -84,12 +84,10 @@ class RecipeController extends Controller
     {
 
         // $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->where('name', 'LIKE', '%' . $name . '%')->get();
-        $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->where(DB::raw('lower(name)'), 'like', '%' . strtolower($name) . '%')->get();
+        $recipes = Recipe::with(["ratings"])->where(DB::raw('lower(name)'), 'like', '%' . strtolower($name) . '%')->get();
 
         if (count($recipes)) {
-            return response()->json([
-                'recipes' => $recipes
-            ], 200);
+            return RecipeResource::collection($recipes);
         } else {
             return response()->json(['Result' => 'No Data not found'], 404);
         }
