@@ -36,9 +36,7 @@ class FavoriteController extends Controller
     {
         $favorite = Favorite::with("recipe")->where("user_id", $idUser)->where("recipe_id", $idRecipe)->latest()->get();
         if (count($favorite)) {
-            return response()->json([
-                'favorite' => $favorite
-            ], 200);
+            return FavoriteResource::collection($favorite);
         } else {
             return response()->json(['Result' => 'No Data not found'], 404);
         }
