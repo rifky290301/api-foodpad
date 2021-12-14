@@ -312,6 +312,16 @@
       <td>GET</td>
       <td>ambil data resep yang sedang trending</td>
     </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/recipe2/{id}" target="_blank">
+          {{ $baseURL }}/recipe2/{id}
+        </a>
+      </td>
+      <td>{id recipe}</td>
+      <td>GET</td>
+      <td>detail data resep </td>
+    </tr>
   </tbody>
 </table>
 @endsection

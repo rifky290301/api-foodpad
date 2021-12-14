@@ -6,6 +6,7 @@ use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\RecipeResource;
+use App\Http\Resources\DetailRecipeResource;
 use App\Http\Resources\RecipeCategoryResource;
 
 class RecipeController extends Controller
@@ -30,6 +31,12 @@ class RecipeController extends Controller
         return response()->json([
             'recipes' => $recipes
         ], 200);
+    }
+
+    public function show2($id)
+    {
+        $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->where('id', $id)->get();
+        return DetailRecipeResource::collection($recipes);
     }
 
     public function trending()

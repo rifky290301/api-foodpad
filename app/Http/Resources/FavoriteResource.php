@@ -17,16 +17,12 @@ class FavoriteResource extends JsonResource
         $result = 0;
         $temp = $this->recipe->ratings;
         $count = count($temp);
-        if ($count == 0) {
-            $count = 1;
-        }
-        if ($count != 1) {
+        if ($count != 0) {
             for ($i = 0; $i < $count; $i++) {
                 $result = $result + $temp[$i]->rating;
             }
+            $result = $result / $count;
         }
-
-        $result = $result / $count;
 
         return [
             'id' => $this->id,

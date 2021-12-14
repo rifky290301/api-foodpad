@@ -33,6 +33,7 @@ Route::get('/recipe', [RecipeController::class, 'index']);
 Route::get('/recipe2', [RecipeController::class, 'index2']);
 Route::get('/sementara', [RecipeController::class, 'sementara']);
 Route::get('/recipe/{id}', [RecipeController::class, 'show']);
+Route::get('/recipe2/{id}', [RecipeController::class, 'show2']);
 Route::post('/recipe', [RecipeController::class, 'store']);
 Route::put('/recipe/{id}', [RecipeController::class, 'update']);
 Route::delete('/recipe/{id}', [RecipeController::class, 'delete']);

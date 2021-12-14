@@ -2,10 +2,9 @@
 
 namespace App\Http\Resources;
 
-use GrahamCampbell\ResultType\Result;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class RecipeResource extends JsonResource
+class DetailRecipeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,23 +14,19 @@ class RecipeResource extends JsonResource
      */
     public function toArray($request)
     {
-        $result = 0;
-        $temp = $this->ratings;
-        $count = count($temp);
-        if ($count != 0) {
-            for ($i = 0; $i < $count; $i++) {
-                $result = $result + $temp[$i]->rating;
-            }
-            $result = $result / $count;
-        }
-
         return [
             'id' => $this->id,
             'name' => $this->name,
             'thumbnail' => $this->thumbnail,
             'duration' => $this->duration,
+            'description' => $this->description,
             'level' => $this->level,
-            'rating' => number_format($result, 1),
+            // 'author' => UserRecipeResource::collection($this->author),
+            'author' => $this->author,
+            'ratings' => RatingRecipeResource::collection($this->ratings),
+            'steps' => StepRecipeResource::collection($this->steps),
+            'ingredients' => IngredientsRecipeResource::collection($this->ingredients),
+            'categories' => CategoryRecipeResource::collection($this->categories),
         ];
     }
 }
