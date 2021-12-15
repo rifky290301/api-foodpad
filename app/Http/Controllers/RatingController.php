@@ -22,7 +22,7 @@ class RatingController extends Controller
         if (count($rating)) {
             return RatingRecipeResource::collection($rating);
         } else {
-            return response()->json(['data' => []]);
+            return response()->json(['Result' => 'Data not found'], 404);
         }
     }
 
