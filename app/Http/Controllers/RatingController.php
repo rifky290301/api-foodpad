@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Rating;
 use Illuminate\Http\Request;
+use App\Http\Resources\RatingRecipeResource;
 
 class RatingController extends Controller
 {
@@ -13,6 +14,16 @@ class RatingController extends Controller
         return response()->json([
             'rating' => $rating
         ], 200);
+    }
+
+    public function show($idRecipe, $idUser)
+    {
+        $rating = Rating::where("user_id", $idUser)->where("recipe_id", $idRecipe)->latest()->get();
+        if (count($rating)) {
+            return RatingRecipeResource::collection($rating);
+        } else {
+            return response()->json(['data' => []]);
+        }
     }
 
     public function store(Request $request)

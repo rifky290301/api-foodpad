@@ -54,6 +54,7 @@ Route::delete('/favorite/{id}', [FavoriteController::class, 'delete']);
 
 //! RATING
 Route::get('/rating', [RatingController::class, 'index']);
+Route::get('/rating/{idRecipe}/{idUser}', [RatingController::class, 'show']);
 Route::post('/rating', [RatingController::class, 'store']);
 
 //! USER

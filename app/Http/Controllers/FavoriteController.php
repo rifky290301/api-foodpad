@@ -38,7 +38,7 @@ class FavoriteController extends Controller
         if (count($favorite)) {
             return FavoriteResource::collection($favorite);
         } else {
-            return response()->json(['Result' => 'No Data not found'], 404);
+            return response()->json(['Result' => 'Data not found'], 404);
         }
     }
 
