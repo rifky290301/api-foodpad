@@ -17,6 +17,7 @@ class RatingRecipeResource extends JsonResource
         return [
             'rating' => $this->rating,
             'review' => $this->review,
+            'reviewer' => new UserRecipeResource($this->user),
         ];
     }
 }

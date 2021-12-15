@@ -16,7 +16,7 @@ class Recipe extends Model
 
     public function ratings()
     {
-        return $this->hasMany(Rating::class, 'recipe_id');
+        return $this->hasMany(Rating::class, 'recipe_id')->with('user');
     }
 
     public function steps()

@@ -96,7 +96,7 @@ class RecipeController extends Controller
         if (count($recipes)) {
             return RecipeResource::collection($recipes);
         } else {
-            return response()->json(['Result' => 'No Data not found'], 404);
+            return response()->json(['data' => []], 404);
         }
     }
 
