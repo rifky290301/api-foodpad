@@ -26,6 +26,6 @@
   </tbody>
 </table>
 <div class="d-flex justify-content-center">
-  {{ $steps->links('pagination::bootstrap-4') }}
+  {{ $reports->links('pagination::bootstrap-4') }}
 </div>
 @endsection
