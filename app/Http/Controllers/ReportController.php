@@ -39,7 +39,7 @@ class ReportController extends Controller
         $report = Report::where("user_id", $idUser)->where("recipe_id", $idRecipe)->latest()->get();
         if (count($report)) {
             return response()->json([
-                'favorite' => $report
+                'report' => $report
             ], 200);
         } else {
             return response()->json(['Result' => 'Data not found'], 404);
