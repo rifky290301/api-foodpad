@@ -41,6 +41,9 @@
                 <a class="nav-link" href="/category-recipe">Category Recipe</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="/report">Report</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="/list-api">List api</a>
               </li>
             </ul>

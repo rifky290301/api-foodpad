@@ -16,6 +16,7 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IngredientsController;
 use App\Http\Controllers\CategoryRecipesController;
+use App\Models\Report;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,11 @@ Route::get('/rating', function () {
     $users = User::latest()->get();
     $ratings = Rating::with(['recipe', 'user'])->latest()->paginate(10);
     return view('rating', compact('ratings', 'recipes', 'users'));
+});
+
+Route::get('/report', function () {
+    $reports = Report::with(['recipe', 'user'])->latest()->paginate(10);
+    return view('report', compact('reports'));
 });
 
 Route::get('/list-api', function () {

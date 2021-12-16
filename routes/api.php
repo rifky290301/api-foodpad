@@ -67,3 +67,8 @@ Route::get('/category', [CategoryController::class, 'index']);
 Route::get('/category2', [CategoryController::class, 'index2']);
 Route::post('/category', [CategoryController::class, 'store']);
 Route::delete('/category/{id}', [CategoryController::class, 'delete']);
+
+//! Report
+Route::get('/report', [ReportController::class, 'index']);
+Route::get('/report/{idRecipe}/{idUser}', [ReportController::class, 'show']);
+Route::post('/report', [ReportController::class, 'store']);
