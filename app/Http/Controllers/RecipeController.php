@@ -142,6 +142,8 @@ class RecipeController extends Controller
                 $request->file('thumbnail')->move('upload/thumbnail', $date . $random . $request->file('thumbnail')->getClientOriginalName());
                 $recipe->thumbnail = $date . $random . $request->file('thumbnail')->getClientOriginalName();
             }
+        } else {
+            $recipe->thumbnail = $request->thumbnail;
         }
 
         if ($recipe->save()) {
