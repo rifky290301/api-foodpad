@@ -4,12 +4,14 @@ use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StepController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\IngredientsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,3 +77,12 @@ Route::delete('/category/{id}', [CategoryController::class, 'delete']);
 Route::get('/report', [ReportController::class, 'index']);
 Route::get('/report/{idRecipe}/{idUser}', [ReportController::class, 'show']);
 Route::post('/report', [ReportController::class, 'store']);
+
+//! INGREDIENTS
+Route::post('/ingredients', [IngredientsController::class, 'store']);
+
+//! STEP
+Route::post('/step', [StepController::class, 'store']);
+
+//! CATEGORY RECIPE
+Route::post('/category-recipe', [CategoryRecipesController::class, 'store']);
