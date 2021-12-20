@@ -266,6 +266,48 @@
       <td>get</td>
       <td>Pencarian resep berdasarkan nama resep</td>
     </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/report" target="_blank">
+          {{ $baseURL }}/report
+        </a>
+      </td>
+      <td></td>
+      <td>GET</td>
+      <td>ambil data report</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/report" target="_blank">
+          {{ $baseURL }}/report
+        </a>
+      </td>
+      <td>[recipe_id,
+        report,
+        user_id]</td>
+      <td>POST</td>
+      <td>create data report</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/report/{idRecipe}/{idUser}" target="_blank">
+          {{ $baseURL }}/report/{idRecipe}/{idUser}
+        </a>
+      </td>
+      <td></td>
+      <td>GET</td>
+      <td>cek data report</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="{{ $baseURL }}/last-recipe-create" target="_blank">
+          {{ $baseURL }}/last-recipe-create
+        </a>
+      </td>
+      <td></td>
+      <td>GET</td>
+      <td>ambil id resep terakhir dibuat</td>
+    </tr>
     <hr>
     <tr>
       <td>
@@ -322,6 +364,7 @@
       <td>GET</td>
       <td>detail data resep </td>
     </tr>
+  
   </tbody>
 </table>
 @endsection

@@ -25,6 +25,12 @@ class RecipeController extends Controller
         return RecipeResource::collection($recipes);
     }
 
+    public function lastRecipe()
+    {
+        $recipes = Recipe::latest()->first();
+        return RecipeResource::collection($recipes);
+    }
+
     public function show($id)
     {
         $recipes = Recipe::with(["author", "ratings", "steps", "ingredients", "categories"])->where('id', $id)->get();

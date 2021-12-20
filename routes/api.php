@@ -45,6 +45,7 @@ Route::get('/trending2', [RecipeController::class, 'trending2']);
 Route::get('/recipe/thumbnail/{image}', [RecipeController::class, 'thumbnailImage']);
 Route::get('/recipe-category/{category}', [RecipeController::class, 'recipeByCategory']);
 Route::get('/search/{name}', [RecipeController::class, 'search']);
+Route::get('/last-recipe-create', [RecipeController::class, 'lastRecipe']);
 
 //! FAVORITES
 Route::get('/favorite/{id}', [FavoriteController::class, 'index']);
