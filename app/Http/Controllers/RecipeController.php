@@ -27,8 +27,11 @@ class RecipeController extends Controller
 
     public function lastRecipe()
     {
-        $recipes = Recipe::latest()->first();
-        return RecipeResource::collection($recipes);
+        $recipes = Recipe::with(["ratings"])->latest()->first();
+        return response()->json([
+            'id_recipe' => $recipes->id
+        ], 200);
+        // return RecipeResource::collection($recipes);
     }
 
     public function show($id)
