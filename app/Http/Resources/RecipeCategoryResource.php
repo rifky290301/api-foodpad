@@ -18,7 +18,7 @@ class RecipeCategoryResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'thumbnail' => $this->thumbnail,
-            'duration' => $this->duration,
+            'duration' => $this->duration + $this->prepare,
             'level' => $this->level,
             'rating' => number_format($this->rating, 1),
         ];
